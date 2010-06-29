@@ -1,0 +1,66 @@
+/* =========================================
+   Feuille de style s'ajoutant aux règles
+	   déjà définies dans le template
+========================================= */
+
+.gauche, .droite {
+	width: 45%;
+	display: block;
+}
+.gauche {
+	float: left;
+}
+.droite {
+	float: right;
+}
+div#pied {
+	clear: both;
+}
+label strong {
+	color: red;
+	font-weight: bold;
+}
+div.error {
+	background: url("../images/code_attention.png") no-repeat scroll 10px center #FFFFFF;
+	background-color: #FFFFFF;
+	border: 3px solid #BA2121;
+	margin: 15px 50px;
+	padding: 10px 10px 10px 50px;
+}
+div.error h6 {
+	font-size: 15px;
+	margin: 0;
+	color: red;
+}
+div#contenu {
+	padding: 20px;
+}
+label {
+	display: block;
+	width: 250px;
+	float: left;
+}
+table {
+	margin: 0 auto;
+	border-collapse: collapse;
+	border: 1px solid black;
+}
+caption {
+	margin-bottom: 5px;
+}
+thead, tfoot {
+	border: 1px solid black;
+}
+td, th {
+	padding: 5px 10px;
+	vertical-align: middle;
+	border-left: 1px solid black;
+	border-right: 1px solid black;
+	text-align: center;
+}
+tr.pair {
+	background-color: #EEEEEE;
+}
+.block {
+	display: block
+}
