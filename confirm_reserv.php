@@ -1,5 +1,6 @@
 <?php
 require_once('inc/config.inc.php');
+require_once('inc/connec_bdd.inc.php');
 require_once('inc/functions.inc.php');
 
 // Avant toute autre chose, on ouvre la session, pour pouvoir accéder aux variables de session
@@ -11,15 +12,13 @@ if (!isset($_SESSION['id'], $_SESSION['nom'], $_SESSION['prenom'], $_SESSION['ma
 	exit();
 }
 
-$num_vol = $_SESSION['num_vol'];
-$jour = $_SESSION['jour'];
-$mois = $_SESSION['mois'];
+$code_passager = pg_escape_string($_SESSION['id']);
+$num_vol = pg_escape_string($_SESSION['num_vol']);
+$jour = pg_escape_string($_SESSION['jour']);
+$mois = pg_escape_string($_SESSION['mois']);
 unset($_SESSION['num_vol'], $_SESSION['jour'], $_SESSION['mois']);
 
-if (!isset($_SESSION['id'], $_SESSION['nom'], $_SESSION['prenom'], $_SESSION['mail'])) {
-	header('Location: error.php');
-	exit();	
-}
+$position_la = get_position_la($num_vol, $jour, $mois, $code_passager);
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
 <html>
@@ -37,8 +36,13 @@ if (!isset($_SESSION['id'], $_SESSION['nom'], $_SESSION['prenom'], $_SESSION['ma
 		<div id="contenu">
 			<p>
 				La commande sur le vol <?php echo($num_vol); ?> du <?php echo(str_pad($jour, 2, '0', STR_PAD_LEFT) .'/'. str_pad($mois, 2, '0', STR_PAD_LEFT)); ?> au nom de <?php echo($_SESSION['prenom'] .' '. strtoupper($_SESSION['nom'])); ?> a bien été validé.<br />
+				<?php if ($position_la != TRUE) { 
+				// On est obligé de passer par ce test un peu spécial, car la fonction renvoit un booléen, seulement si il y a eu une erreur, et une chaîne de caractère dans le cas contraire
+				?>
+				Vous êtes <?php echo($position_la); ?> dans la liste d'attente.<br />
+				<?php } ?>
 				Vous allez recevoir d'ici peu un mail de r&eacute;capitulatif des donn&eacute;es du d&eacute;part.<br />
-				Nous vons remer&ccedil;ions pour votre confiance, et vous souhaitons un agr&eacute;able voyage en notre compagnie.
+				Nous vons remer&ccedil;ions pour votre confiance, et vous souhaitons un agr&eacute;able voyage avec notre compagnie.
 			</p>
 			<a href="home.php" class="gauche" title="Cliquer ici pour revenir à la page d'accueil">Revenir à la page d'accuei</a>
 			<a href="liste_depart.php" class="droite" title="Cliquer ici pour revenir à la liste des prochains départs">Revenir à la liste des prochains départs</a>

@@ -49,6 +49,26 @@ function pg_rollback() {
 	}
 }
 
+function get_position_la($num_vol, $jour, $mois, $code_passager) {
+	if (empty($num_vol) || empty($jour) || empty($mois) || empty($code_passager)) {
+		return FALSE;
+	} else {
+		$req_position_la = 'SELECT COUNT(*) AS position_la FROM reservation WHERE num_vol = '. $num_vol .' AND jour = '. $jour .' AND mois = '. $mois .' AND date_reserv > (SELECT date_reserv FROM reservation WHERE num_vol = '. $num_vol .' AND jour = '. $jour .' AND mois = '. $mois .' AND code_passager = '. $code_passager .');';
+		$res_position_la = pg_query($ret_position_la, $_connection);
+		$ret_position_la = pg_fetch_assoc($res_position_la);
+		if (!$ret_position_la) {
+			return FALSE;
+		}
+		$position_la = $ret_position_la['position_la'] + 1;
+		if ($position_la == 1) {
+			$position_la .= 'er';
+		} else {
+			$position_la .= 'ème';
+		}
+		return $position_la;
+	}
+}
+
 /* Autres fonctions */
 function inversBool($booleen) {
 	if ($booleen) {

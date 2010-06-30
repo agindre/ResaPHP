@@ -1,11 +1,11 @@
 <?php
 require_once('inc/config.inc.php');
-require_once('inc/functions.inc.php');
 require_once('inc/connec_bdd.inc.php');
+require_once('inc/functions.inc.php');
 
 // Avant toute autre chose, on ouvre la session, pour pouvoir accéder aux variables de session
 session_start();
-myPrint_r($_SESSION);
+// myPrint_r($_SESSION);
 
 if (!isset($_SESSION['id'], $_SESSION['nom'], $_SESSION['prenom'], $_SESSION['mail'])) {
 	$_SESSION['liste_err'] = array('Vous devez être connecté avant de réserver une place sur un vol');
@@ -16,11 +16,11 @@ if (!isset($_SESSION['id'], $_SESSION['nom'], $_SESSION['prenom'], $_SESSION['ma
 if (!isset($_SESSION['num_vol'], $_SESSION['jour'], $_SESSION['mois'])) {
 	header('Location: error.php');
 	exit();
-} else {
-	$num_vol = $_SESSION['num_vol'];
-	$jour = $_SESSION['jour'];
-	$mois = $_SESSION['mois'];
 }
+
+$num_vol = pg_escape_string($_SESSION['num_vol']);
+$jour = pg_escape_string($_SESSION['jour']);
+$mois = pg_escape_string($_SESSION['mois']);
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
 <html>

@@ -1,7 +1,7 @@
 <?php
 require_once('inc/config.inc.php');
-require_once('inc/functions.inc.php');
 require_once('inc/connec_bdd.inc.php');
+require_once('inc/functions.inc.php');
 
 // Dans cette page, on va stocker la nouvelle réservation.
 // On doit tout d'abord vérifier que les paramètres de session récupérés sont remplis et valides
@@ -31,7 +31,8 @@ $mois = pg_escape_string($_SESSION['mois']);
 $flag_err = 0;
 if (!filter_var($mail, FILTER_VALIDATE_EMAIL)) {
 	$flag_err = 'Mail';
-} elseif ($num_vol != intval($num_vol) || $num_vol > 9000000000) {
+} elseif (!is_numeric($num_vol) || $num_vol > 9000000000) {
+	// COUILLE ICI => is_numeric ?
 	// On evite de rentrer une valeur non entière, ou un numéro de vol qui ne peut pas exister, sauf si un nouveau continent apparaît...
 	$flag_err = 'Num Vol';
 } elseif ($jour < 1 || $jour > daysInMonth($mois)) {
@@ -61,11 +62,12 @@ try {
 	exit();
 }
 
-$subject = 'Votre réservation a bien été reçue';
+// Ici, on trouve la partie responsable de l'envoi des mails, avec vérification de la réception des mails, et système de suppression de la réservation en cas de non-réception du mail. Il faut cependant un serveur smtp intégré pour que cette partie soit fonctionnelle
+
+/* $subject = 'Votre réservation a bien été reçue';
 $message = 'Votre réservation pour le vol '. $num_vol .' du '. str_pad($jour, 2, '0', STR_PAD_LEFT) .'/'. str_pad($mois, 2, '0', STR_PAD_LEFT) .' a bien été prise en compte. Merci d\'être passé par notre site. Bon voyage !';
 
-// Ici, on trouve la partie responsable de l'envoi des mails, avec vérification de la réception des mails, et système de suppression de la réservation en cas de non-réception du mail. Il faut cependant un serveur smtp intégré pour que cette partie soit fonctionnelle
-/* $flag_mail = FALSE;
+$flag_mail = FALSE;
 $nb_test_mail = 0;
 do {
 	myEcho($mail .' '. $subject .' '. $message .'<hr />');
