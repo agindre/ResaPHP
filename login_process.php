@@ -1,6 +1,7 @@
 <?php
 require_once('inc/config.inc.php');
 require_once('inc/connec_bdd.inc.php');
+require_once('inc/functions.inc.php');
 
 // Dans cette page, on va inscrire le nouveau client.
 // Mais avant cela, il faut vérifier que les données qu'il a transmis sont exactes, et sous une forme correcte.
@@ -68,10 +69,10 @@ if (count($_liste_err) > 0) {
 	
 	// Maintenant que le nouvel ID passager est cree, on peut tenter d'inserer le nouveau client
 	try {
-		pg_begin()
+		pg_begin();
 		$req_new_client = 'INSERT INTO passager (code_passager, nom_pass, prenom_pass, adresse_pass, departmt_pass, tel_pass, mail_pass, mdp_pass) VALUES (\''. $new_num_id .'\', \''. $nom .'\', \''. $prenom .'\', \''. $adresse .'\', \''. $departmt .'\', '. $tel .', \''. $mail .'\', \''. $passwd .'\');';
 		$res_new_client = pg_query($req_new_client);
-		pg_commit()
+		pg_commit();
 	} catch (Exception $e) {
 		pg_rollback();
  		header('Location: error.php');

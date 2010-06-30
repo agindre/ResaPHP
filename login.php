@@ -25,11 +25,9 @@ if (isset($_SESSION['id'], $_SESSION['nom'], $_SESSION['prenom'], $_SESSION['mai
 		<link rel="stylesheet" type="text/css" href="inc/css/addon.css" media="screen" />
 	</head>
 	<body>
-<?php include('inc/header_nreg.inc.php'); ?>
+		<?php require_once('inc/header_nreg.inc.php'); ?>
 		<div id="contenu">
-			<p>
-				Vous devez vous inscrire pour commander sur notre site. Prenez 5 minutes, et rejoignez-nous !
-			</p>
+			<p>Vous devez vous inscrire pour commander sur notre site. Prenez 5 minutes, et rejoignez-nous !</p>
 			<?php if (isset($_liste_err)) { ?>
 			<div class="error">
 				<h6>Nous avons rencontr&eacute; des erreurs lors de la pr&eacute;c&eacute;dente tentative d'inscription :</h6> 
@@ -54,6 +52,6 @@ if (isset($_SESSION['id'], $_SESSION['nom'], $_SESSION['prenom'], $_SESSION['mai
 				<input type="submit" value="Valider l'inscription" />
 			</form>
 		</div>
-<?php include('inc/footer.inc.php'); ?>
+		<?php require_once('inc/footer.inc.php'); ?>
 	</body>
 </html>
