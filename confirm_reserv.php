@@ -17,8 +17,8 @@ $num_vol = pg_escape_string($_SESSION['num_vol']);
 $jour = pg_escape_string($_SESSION['jour']);
 $mois = pg_escape_string($_SESSION['mois']);
 unset($_SESSION['num_vol'], $_SESSION['jour'], $_SESSION['mois']);
-
-$position_la = get_position_la($num_vol, $jour, $mois, $code_passager);
+var_dump($_connection);
+$position_la = get_position_la($num_vol, $jour, $mois, $code_passager, $_connection);
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
 <html>
@@ -44,8 +44,8 @@ $position_la = get_position_la($num_vol, $jour, $mois, $code_passager);
 				Vous allez recevoir d'ici peu un mail de r&eacute;capitulatif des donn&eacute;es du d&eacute;part.<br />
 				Nous vons remer&ccedil;ions pour votre confiance, et vous souhaitons un agr&eacute;able voyage avec notre compagnie.
 			</p>
-			<a href="home.php" class="gauche" title="Cliquer ici pour revenir à la page d'accueil">Revenir à la page d'accuei</a>
-			<a href="liste_depart.php" class="droite" title="Cliquer ici pour revenir à la liste des prochains départs">Revenir à la liste des prochains départs</a>
+			<a href="home.php" class="gauche" title="Cliquer ici pour revenir à la page d'accueil">Revenir &agrave; la page d'accueil</a>
+			<a href="liste_depart.php" class="droite" title="Cliquer ici pour revenir à la liste des prochains départs">Revenir &agrave; la liste des prochains d&eacute;parts</a>
 		</div>
 		<?php require_once('inc/footer.inc.php'); ?>
 	</body>

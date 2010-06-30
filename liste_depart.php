@@ -34,7 +34,7 @@ if (isset($_SESSION['id'], $_SESSION['nom'], $_SESSION['prenom'], $_SESSION['mai
 				<caption>Voici la liste des prochains d&eacute;parts : </caption>
 				<thead>
 					<tr>
-						<th>N° du vol</th>
+						<th>N&deg; du vol</th>
 						<th>Date</th>
 						<th>Horaires</th>
 						<th>Destination</th>
@@ -64,17 +64,17 @@ if (isset($_SESSION['id'], $_SESSION['nom'], $_SESSION['prenom'], $_SESSION['mai
 						echo("\t\t\t\t\t\t".'<td>'. strtolower($ret_departs['frequence']) .' '. str_pad($ret_departs['jour'], 2, '0', STR_PAD_LEFT) .'/'. str_pad($ret_departs['mois'], 2, '0', STR_PAD_LEFT) .'</td>'."\n");
 						$details_depart = date_parse($ret_departs['vol_h_depart']);
 						$details_arrivee = date_parse($ret_departs['vol_h_arrivee']);
-						echo("\t\t\t\t\t\t".'<td>Depart : '. str_pad($details_depart['hour'], 2, '0', STR_PAD_LEFT) .':'. str_pad($details_depart['minute'], 2, '0', STR_PAD_LEFT) .'<br />Arrivée : '. str_pad($details_arrivee['hour'], 2, '0', STR_PAD_LEFT) .':'. str_pad($details_arrivee['minute'], 2, '0', STR_PAD_LEFT) .'</td>'."\n");
+						echo("\t\t\t\t\t\t".'<td>Depart : '. str_pad($details_depart['hour'], 2, '0', STR_PAD_LEFT) .':'. str_pad($details_depart['minute'], 2, '0', STR_PAD_LEFT) .'<br />Arriv&eacute;e : '. str_pad($details_arrivee['hour'], 2, '0', STR_PAD_LEFT) .':'. str_pad($details_arrivee['minute'], 2, '0', STR_PAD_LEFT) .'</td>'."\n");
 						echo("\t\t\t\t\t\t".'<td>'. $ret_departs['destination'] .'</td>'."\n");
 						echo("\t\t\t\t\t\t".'<td>'. $ret_departs['nb_places_disp'] .'</td>'."\n");
-						echo("\t\t\t\t\t\t".'<td><a href="fiche_depart.php?num='. $ret_departs['num_vol'] .'&jour='. $ret_departs['jour'] .'&mois='. $ret_departs['mois'] .'" title="Cliquez ici pour reserver sur ce depart">Réserver</a></td>'."\n");
+						echo("\t\t\t\t\t\t".'<td><a href="fiche_depart.php?num='. $ret_departs['num_vol'] .'&jour='. $ret_departs['jour'] .'&mois='. $ret_departs['mois'] .'" title="Cliquez ici pour reserver sur ce depart">R&eacute;server</a></td>'."\n");
 						echo("\t\t\t\t\t".'</tr>'."\n");
 					}
 				?>
 				</tbody>
 				<tfoot>
 					<tr>
-						<th>N° du vol</th>
+						<th>N&deg; du vol</th>
 						<th>Date</th>
 						<th>Horaires</th>
 						<th>Destination</th>
