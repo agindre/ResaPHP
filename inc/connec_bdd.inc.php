@@ -12,5 +12,6 @@ try {
 	$_connection = pg_connect('host='. $_host .' port='. $_port .' dbname='. $_db .' user='. $_user .' password='. $_pwd);
 } catch (Exception $e) {
  	header('Location: error.php');
+ 	exit();
 }
 ?>

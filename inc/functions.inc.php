@@ -23,7 +23,7 @@ function myEcho($string, $title = '') {
 /* Fonctions pour les connexions &agrave; la BDD */
 /**
  *	On utilise les trois fonctions suivantes seulement en cas de modification des donn&eacute;es de la BDD (INSERT, UPDATE, DELETE).
- *	Or, sur l'ensemble du site, ce type de requête est toujours entour&eacute; d'un try catch, afin de r&eacute;cup&eacute;rer les exceptions qui pourrait se produire.
+ *	Or, sur l'ensemble du site, ce type de requ&ecirc;te est toujours entour&eacute; d'un try catch, afin de r&eacute;cup&eacute;rer les exceptions qui pourrait se produire.
  *	Du coup, le mieux dans ces trois fonctions est de laisser le programme appelant g&eacute;rer l'exception. C'est pour cela qu'on lui renvoit.
  *	Si tout se passe bien, alors, on ne renvoit rien, et le programme continue.
  */
@@ -126,7 +126,7 @@ function ddlDepart() {
 		'10' => '(10) Aube',
 		'11' => '(11) Aude',
 		'12' => '(12) Aveyron',
-		'13' => '(13) Bouches du Rhône',
+		'13' => '(13) Bouches du Rh&ocirc;ne',
 		'14' => '(14) Calvados',
 		'15' => '(15) Cantal',
 		'16' => '(16) Charente',
@@ -135,12 +135,12 @@ function ddlDepart() {
 		'19' => '(19) Corr&egrave;ze',
 		'2A' => '(2A) Corse du Sud',
 		'2B' => '(2B) Haute-Corse',
-		'21' => '(21) Côte d\'Or',
-		'22' => '(22) Côtes d\'Armor',
+		'21' => '(21) C&ocirc;te d\'Or',
+		'22' => '(22) C&ocirc;tes d\'Armor',
 		'23' => '(23) Creuse',
 		'24' => '(24) Dordogne',
 		'25' => '(25) Doubs',
-		'26' => '(26) Drôme',
+		'26' => '(26) Dr&ocirc;me',
 		'27' => '(27) Eure',
 		'28' => '(28) Eure et Loir',
 		'29' => '(29) Finist&egrave;re',
@@ -177,15 +177,15 @@ function ddlDepart() {
 		'60' => '(60) Oise',
 		'61' => '(61) Orne',
 		'62' => '(62) Pas de Calais',
-		'63' => '(63) Puy de Dôme',
+		'63' => '(63) Puy de D&ocirc;me',
 		'64' => '(64) Pyr&eacute;n&eacute;es Atlantiques',
 		'65' => '(65) Hautes Pyr&eacute;n&eacute;es',
 		'66' => '(66) Pyr&eacute;n&eacute;es Orientales',
 		'67' => '(67) Bas Rhin',
 		'68' => '(68) Haut Rhin',
-		'69' => '(69) Rhône',
-		'70' => '(70) Haute Saône',
-		'71' => '(71) Saône et Loire',
+		'69' => '(69) Rh&ocirc;ne',
+		'70' => '(70) Haute Sa&ocirc;ne',
+		'71' => '(71) Sa&ocirc;ne et Loire',
 		'72' => '(72) Sarthe',
 		'73' => '(73) Savoie',
 		'74' => '(74) Haute Savoie',
