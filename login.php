@@ -46,9 +46,9 @@ if (isset($_SESSION['id'], $_SESSION['nom'], $_SESSION['prenom'], $_SESSION['mai
 				<label for="prenom">Votre pr&eacute;nom : <strong>*</strong></label><input type="text" id="prenom" name="prenom" /><br />
 				<label for="nom">Votre nom : <strong>*</strong></label><input type="text" id="nom" name="nom" /><br />
 				<label for="adresse">Votre adresse : <strong>*</strong></label><textarea cols="50" rows="3" id="adresse" name="adresse">Tapez votre adresse ici...</textarea><br />
-				<label for="departmt">Votre département : <strong>*</strong></label>
+				<label for="departmt">Votre d&eacute;partement : <strong>*</strong></label>
 				<?php ddlDepart(); ?>
-				<label for="tel">Votre numéro de téléphone :</label><input type="text" id="tel" name="tel" maxlength="14" /><br />
+				<label for="tel">Votre num&eacute;ro de t&eacute;l&eacute;phone :</label><input type="text" id="tel" name="tel" maxlength="14" /><br />
 				<label for="mail">Votre adresse mail : <strong>*</strong></label><input type="text" id="mail" name="mail" /><br />
 				<label for="passwd">Votre mot de passe : <strong>*</strong></label><input type="password" id="passwd" name="passwd" /><br />
 				<input type="submit" value="Valider l'inscription" />

@@ -1,6 +1,6 @@
 <?php
 /* =========================================
-    Liste des fonctions PHP utilisées
+    Liste des fonctions PHP utilis&eacute;es
 ========================================= */
 
 /* Fonctions d'aide au deboguage */
@@ -20,11 +20,11 @@ function myEcho($string, $title = '') {
 	echo($string .'<br />');
 }
 
-/* Fonctions pour les connexions à la BDD */
+/* Fonctions pour les connexions &agrave; la BDD */
 /**
- *	On utilise les trois fonctions suivantes seulement en cas de modification des données de la BDD (INSERT, UPDATE, DELETE).
- *	Or, sur l'ensemble du site, ce type de requête est toujours entouré d'un try catch, afin de récupérer les exceptions qui pourrait se produire.
- *	Du coup, le mieux dans ces trois fonctions est de laisser le programme appelant gérer l'exception. C'est pour cela qu'on lui renvoit.
+ *	On utilise les trois fonctions suivantes seulement en cas de modification des donn&eacute;es de la BDD (INSERT, UPDATE, DELETE).
+ *	Or, sur l'ensemble du site, ce type de requête est toujours entour&eacute; d'un try catch, afin de r&eacute;cup&eacute;rer les exceptions qui pourrait se produire.
+ *	Du coup, le mieux dans ces trois fonctions est de laisser le programme appelant g&eacute;rer l'exception. C'est pour cela qu'on lui renvoit.
  *	Si tout se passe bien, alors, on ne renvoit rien, et le programme continue.
  */
 function pg_begin() {
@@ -63,7 +63,7 @@ function get_position_la($num_vol, $jour, $mois, $code_passager) {
 		if ($position_la == 1) {
 			$position_la .= 'er';
 		} else {
-			$position_la .= 'ème';
+			$position_la .= '&egrave;me';
 		}
 		return $position_la;
 	}
@@ -79,7 +79,7 @@ function inversBool($booleen) {
 	return $booleen;
 }
 
-/* === Merci à dev@omikrosys.com (Page 'date' de la doc PHP) pour ces deux fonctions === */
+/* === Merci &agrave; dev@omikrosys.com (Page 'date' de la doc PHP) pour ces deux fonctions === */
 function leapYear($year) { 
  	if ($year % 400 == 0 || ($year % 4 == 0 && $year % 100 != 0)) {
  		return TRUE;
@@ -120,9 +120,9 @@ function ddlDepart() {
 		'04' => '(04) Alpes de Haute Provence',
 		'05' => '(05) Hautes Alpes',
 		'06' => '(06) Alpes Maritimes',
-		'07' => '(07) Ardèche',
+		'07' => '(07) Ard&egrave;che',
 		'08' => '(08) Ardennes',
-		'09' => '(09) Ariège',
+		'09' => '(09) Ari&egrave;ge',
 		'10' => '(10) Aube',
 		'11' => '(11) Aude',
 		'12' => '(12) Aveyron',
@@ -132,7 +132,7 @@ function ddlDepart() {
 		'16' => '(16) Charente',
 		'17' => '(17) Charente Maritime',
 		'18' => '(18) Cher',
-		'19' => '(19) Corrèze',
+		'19' => '(19) Corr&egrave;ze',
 		'2A' => '(2A) Corse du Sud',
 		'2B' => '(2B) Haute-Corse',
 		'21' => '(21) Côte d\'Or',
@@ -143,16 +143,16 @@ function ddlDepart() {
 		'26' => '(26) Drôme',
 		'27' => '(27) Eure',
 		'28' => '(28) Eure et Loir',
-		'29' => '(29) Finistère',
+		'29' => '(29) Finist&egrave;re',
 		'30' => '(30) Gard',
 		'31' => '(31) Haute Garonne',
 		'32' => '(32) Gers',
 		'33' => '(33) Gironde',
-		'34' => '(34) Hérault',
+		'34' => '(34) H&eacute;rault',
 		'35' => '(35) Ille et Vilaine',
 		'36' => '(36) Indre',
 		'37' => '(37) Indre et Loire',
-		'38' => '(38) Isère',
+		'38' => '(38) Is&egrave;re',
 		'39' => '(39) Jura',
 		'40' => '(40) Landes',
 		'41' => '(41) Loir et Cher',
@@ -162,7 +162,7 @@ function ddlDepart() {
 		'45' => '(45) Loiret',
 		'46' => '(46) Lot',
 		'47' => '(47) Lot et Garonne',
-		'48' => '(48) Lozère',
+		'48' => '(48) Loz&egrave;re',
 		'49' => '(49) Maine et Loire',
 		'50' => '(50) Manche',
 		'51' => '(51) Marne',
@@ -172,15 +172,15 @@ function ddlDepart() {
 		'55' => '(55) Meuse',
 		'56' => '(56) Morbihan',
 		'57' => '(57) Moselle',
-		'58' => '(58) Nièvre',
+		'58' => '(58) Ni&egrave;vre',
 		'59' => '(59) Nord',
 		'60' => '(60) Oise',
 		'61' => '(61) Orne',
 		'62' => '(62) Pas de Calais',
 		'63' => '(63) Puy de Dôme',
-		'64' => '(64) Pyrénées Atlantiques',
-		'65' => '(65) Hautes Pyrénées',
-		'66' => '(66) Pyrénées Orientales',
+		'64' => '(64) Pyr&eacute;n&eacute;es Atlantiques',
+		'65' => '(65) Hautes Pyr&eacute;n&eacute;es',
+		'66' => '(66) Pyr&eacute;n&eacute;es Orientales',
 		'67' => '(67) Bas Rhin',
 		'68' => '(68) Haut Rhin',
 		'69' => '(69) Rhône',
@@ -193,13 +193,13 @@ function ddlDepart() {
 		'76' => '(76) Seine Maritime',
 		'77' => '(77) Seine et Marne',
 		'78' => '(78) Yvelines',
-		'79' => '(79) Deux Sèvres',
+		'79' => '(79) Deux S&egrave;vres',
 		'80' => '(80) Somme',
 		'81' => '(81) Tarn',
 		'82' => '(82) Tarn et Garonne',
 		'83' => '(83) Var',
 		'84' => '(84) Vaucluse',
-		'85' => '(85) Vendée',
+		'85' => '(85) Vend&eacute;e',
 		'86' => '(86) Vienne',
 		'87' => '(87) Haute Vienne',
 		'88' => '(88) Vosges',
@@ -213,7 +213,7 @@ function ddlDepart() {
 		'971' => '(971) Guadeloupe',
 		'972' => '(972) Martinique',
 		'973' => '(973) Guyane',
-		'974' => '(974) Réunion',
+		'974' => '(974) R&eacute;union',
 		'975' => '(975) Saint Pierre et Miquelon',
 		'976' => '(976) Mayotte'
 	);
