@@ -1,7 +1,7 @@
 <?php
 require_once('inc/config.inc.php');
-require_once('inc/functions.inc.php');
 require_once('inc/connec_bdd.inc.php');
+require_once('inc/functions.inc.php');
 
 // Avant toute autre chose, on ouvre la session, pour pouvoir accéder aux variables de session
 session_start();
@@ -96,24 +96,24 @@ if (isset($_SESSION['id'], $_SESSION['nom'], $_SESSION['prenom'], $_SESSION['mai
 					<p>
 						Numero du vol : <?php echo($ret_donnees_depart['num_vol']); ?><br />
 						Destination : <?php echo($ret_donnees_depart['destination']); ?><br />
-						Horaires de départ : <?php echo(strtolower($ret_donnees_depart['frequence']) .' '. str_pad($ret_donnees_depart['jour'], 2, '0', STR_PAD_LEFT) .'/'. str_pad($ret_donnees_depart['mois'], 2, '0', STR_PAD_LEFT) .' '. str_pad($details_depart['hour'], 2, '0', STR_PAD_LEFT) .':'. str_pad($details_depart['minute'], 2, '0', STR_PAD_LEFT)); ?><br />
+						Horaires de d&eacute;part : <?php echo(strtolower($ret_donnees_depart['frequence']) .' '. str_pad($ret_donnees_depart['jour'], 2, '0', STR_PAD_LEFT) .'/'. str_pad($ret_donnees_depart['mois'], 2, '0', STR_PAD_LEFT) .' '. str_pad($details_depart['hour'], 2, '0', STR_PAD_LEFT) .':'. str_pad($details_depart['minute'], 2, '0', STR_PAD_LEFT)); ?><br />
 						Horaires d'arriv&eacute;e : <?php echo($jour_arrivee .' '. str_pad($num_jour_arrivee, 2, '0', STR_PAD_LEFT) .'/'. str_pad($num_mois_arrivee, 2, '0', STR_PAD_LEFT) .' '. str_pad($details_arrivee['hour'], 2, '0', STR_PAD_LEFT) .':'. str_pad($details_arrivee['minute'], 2, '0', STR_PAD_LEFT)); ?><br />
 						Dur&eacute;e du vol : <?php echo($ret_donnees_depart['duree_vol']); ?>
 					</p>
 				</div>
 				<div class="droite">
 					<p>
-						Modele de l'avion : <?php echo($ret_donnees_depart['fabriquant'] .' '. $ret_donnees_depart['modele']); ?><br />
+						Mod&egrave;le de l'avion : <?php echo($ret_donnees_depart['fabriquant'] .' '. $ret_donnees_depart['modele']); ?><br />
 						Nombre de places disponibles : <?php echo($ret_donnees_depart['nb_places_disp'] .' sur '. $ret_donnees_depart['nb_places']); ?><br /><br />
-						<a href="liste_depart.php" title="Cliquer ici pour revenir à la liste des départs" class="block">Revenir &agrave; la liste des d&eacute;parts</a>
-						<a href="valid_reserv.php" title="Cliquer ici pour réserver sur ce départ" class="block">R&eacute;server sur ce vol</a>
+						<a href="liste_depart.php" title="Cliquer ici pour revenir &agrave; la liste des départs" class="block">Revenir &agrave; la liste des d&eacute;parts</a>
+						<a href="valid_reserv.php" title="Cliquer ici pour r&eacute;server sur ce départ" class="block">R&eacute;server sur ce vol</a>
 					</p>
 				</div>
 				<br style="clear:both" />
 				<?php
 			} else { ?>
 				<p>Le vol que vous recherchez n'existe pas</p>
-				<a href="liste_depart.php" title="Cliquer ici pour revenir à la liste des départs">Revenir &agrave; la liste des d&eacute;parts</a>
+				<a href="liste_depart.php" title="Cliquer ici pour revenir &agrave; la liste des départs">Revenir &agrave; la liste des d&eacute;parts</a>
 			<?php }
 		?>
 		</div>

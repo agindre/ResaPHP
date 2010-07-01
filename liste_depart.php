@@ -1,7 +1,7 @@
 <?php
 require_once('inc/config.inc.php');
-require_once('inc/functions.inc.php');
 require_once('inc/connec_bdd.inc.php');
+require_once('inc/functions.inc.php');
 
 // Avant toute autre chose, on ouvre la session, pour pouvoir accéder aux variables de session
 session_start();
@@ -36,9 +36,9 @@ if (!empty($_GET['date'])) {
         <link rel="stylesheet" type="text/css" href="inc/css/modele03.css" media="screen" />
         <link rel="stylesheet" type="text/css" href="inc/css/addon.css" media="screen" />
         <link rel="stylesheet" type="text/css" href="inc/css/jquery-ui-1.8.2.custom.css" media="screen" />
-        <script type="text/javascript" src="inc/js/jquery-1.4.2.js" />
-        <script type="text/javascript" src="inc/js/jquery.ui.core.js" />
-        <script type="text/javascript" src="inc/js/jquery.ui.datepicker.js" />
+        <script type="text/javascript" src="inc/js/jquery-1.4.2.js" ></script>
+        <script type="text/javascript" src="inc/js/jquery.ui.core.js" ></script>
+        <script type="text/javascript" src="inc/js/jquery.ui.datepicker.js" ></script>
         <script type="text/javascript">
             $(function() {
                 //ajoute la gestion du calendrier au champ date

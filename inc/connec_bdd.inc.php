@@ -1,7 +1,7 @@
 <?php
-/* =========================================
-  Script de connection à la BDD PostGreSQL
-========================================= */
+/* ==========================================
+   Script de connexion à la BDD PostGreSQL
+========================================== */
 $_host = 'localhost';
 $_port = '5432';
 $_db = 'projetibd';
