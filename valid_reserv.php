@@ -47,9 +47,9 @@ $mois = pg_escape_string($_SESSION['mois']);
 			$details_depart = date_parse($ret_donnees_depart['vol_h_depart']);
 			
 			// On affiche les principales donnees du vol, sans les afficher toutes, puisque cela a deja ete fait dans la page precedente
-			echo("\t\t\t".'<p>Vous souhaitez réserver une place sur le vol '. $ret_donnees_depart['num_vol'] .' du '. strtolower($ret_donnees_depart['frequence']) .' '. str_pad($ret_donnees_depart['jour'], 2, '0', STR_PAD_LEFT) .'/'. str_pad($ret_donnees_depart['mois'], 2, '0', STR_PAD_LEFT) .' '. str_pad($details_depart['hour'], 2, '0', STR_PAD_LEFT) .'h'. str_pad($details_depart['minute'], 2, '0', STR_PAD_LEFT) .' à destination de '. $ret_donnees_depart['destination'] .'</p>'."\n");
+			echo("\t\t\t".'<p>Vous souhaitez r&eacute;server une place sur le vol '. $ret_donnees_depart['num_vol'] .' du '. strtolower($ret_donnees_depart['frequence']) .' '. str_pad($ret_donnees_depart['jour'], 2, '0', STR_PAD_LEFT) .'/'. str_pad($ret_donnees_depart['mois'], 2, '0', STR_PAD_LEFT) .' '. str_pad($details_depart['hour'], 2, '0', STR_PAD_LEFT) .'h'. str_pad($details_depart['minute'], 2, '0', STR_PAD_LEFT) .' &agrave; destination de '. $ret_donnees_depart['destination'] .'</p>'."\n");
 			
-			echo("\t\t\t".'<h4>Etat des réservations : </h4>'."\n");
+			echo("\t\t\t".'<h4>Etat des r&eacute;servations : </h4>'."\n");
 			// On doit maintenant récupérer les informations concernant le nombre de personnes dans la liste d'attente, si le nombre de places disponibles est nul
 			if ($ret_donnees_depart['nb_places_disp'] != 0) {
 				if ($ret_donnees_depart['nb_places_disp'] < $ret_donnees_depart['nb_places'] / 10) {
@@ -82,8 +82,8 @@ $mois = pg_escape_string($_SESSION['mois']);
 					<?php } ?>						
 				</p>
 				<?php } ?>
-				<a href="liste_depart.php" class="gauche" title="Cliquer ici pour revenir à la liste des départs et choisir un nouveau vol sur lequel réserver">Retour &agrave; la liste des d&eacute;parts</a>
-				<a href="valid_reserv_process.php" class="droite" title="Cliquer ici pour valider votre réservation">Valider la r&eacute;servation</a>
+				<a href="liste_depart.php" class="gauche" title="Cliquer ici pour revenir &agrave; la liste des d&eacute;parts et choisir un nouveau vol sur lequel r&eacute;server">Retour &agrave; la liste des d&eacute;parts</a>
+				<a href="valid_reserv_process.php" class="droite" title="Cliquer ici pour valider votre r&eacute;servation">Valider la r&eacute;servation</a>
 				<br style="clear: both" />
 			</div>
 		</div>

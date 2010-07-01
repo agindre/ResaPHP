@@ -17,10 +17,10 @@
 /* Général */
 body {
 	color: #F0E39E;
-	background: #2C2F22;
+	background: #FFFFFF;
 }
 a {
-	color: #FF6533;
+	color: #FFFFFF;
 }
 a:hover, a:focus {
 	color: #FF4C00;
@@ -36,19 +36,20 @@ strong {
 
 /* Navigation */
 #navigation {
-	background: #181A12;
+	background: #051039;
 }
 #navigation a {
-	color: #FF6533;
+	color: #FFFFFF;
 }
 #navigation a:hover, #navigation a:focus {
-	background: #000000;
+	background: #CDDDE9;
+	color: #051039;
 }
 
 /* Contenu principal */
 #contenu {
 	color: #363B29;
-	background: #cbd888;
+	background: #FFFFFF;
 }
 #contenu a {
 	color: #332510;
@@ -62,7 +63,8 @@ strong {
 
 /* Pied de page */
 #pied {
-	color: #E6A948;
+	color: #FFFFFF;
+	background-color: #051039;
 }
 
 

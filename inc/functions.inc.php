@@ -1,6 +1,6 @@
 <?php
 /* =========================================
-    Liste des fonctions PHP utilis&eacute;es
+    Liste des fonctions PHP utilisees
 ========================================= */
 
 /* Fonctions d'aide au deboguage */
@@ -20,11 +20,11 @@ function myEcho($string, $title = '') {
 	echo($string .'<br />');
 }
 
-/* Fonctions pour les connexions &agrave; la BDD */
+/* Fonctions pour les connexions a la BDD */
 /**
- *	On utilise les trois fonctions suivantes seulement en cas de modification des donn&eacute;es de la BDD (INSERT, UPDATE, DELETE).
- *	Or, sur l'ensemble du site, ce type de requ&ecirc;te est toujours entour&eacute; d'un try catch, afin de r&eacute;cup&eacute;rer les exceptions qui pourrait se produire.
- *	Du coup, le mieux dans ces trois fonctions est de laisser le programme appelant g&eacute;rer l'exception. C'est pour cela qu'on lui renvoit.
+ *	On utilise les trois fonctions suivantes seulement en cas de modification des donnees de la BDD (INSERT, UPDATE, DELETE).
+ *	Or, sur l'ensemble du site, ce type de requete est toujours entoure d'un try catch, afin de recuperer les exceptions qui pourrait se produire.
+ *	Du coup, le mieux dans ces trois fonctions est de laisser le programme appelant gerer l'exception. C'est pour cela qu'on lui renvoit.
  *	Si tout se passe bien, alors, on ne renvoit rien, et le programme continue.
  */
 function pg_begin() {
@@ -49,12 +49,12 @@ function pg_rollback() {
 	}
 }
 
-function get_position_la($num_vol, $jour, $mois, $code_passager) {
+function get_position_la($num_vol, $jour, $mois, $code_passager, $_connection) {
 	if (empty($num_vol) || empty($jour) || empty($mois) || empty($code_passager)) {
 		return FALSE;
 	} else {
-		$req_position_la = 'SELECT COUNT(*) AS position_la FROM reservation WHERE num_vol = '. $num_vol .' AND jour = '. $jour .' AND mois = '. $mois .' AND date_reserv > (SELECT date_reserv FROM reservation WHERE num_vol = '. $num_vol .' AND jour = '. $jour .' AND mois = '. $mois .' AND code_passager = '. $code_passager .');';
-		$res_position_la = pg_query($ret_position_la, $_connection);
+		$req_position_la = 'SELECT COUNT(*) AS position_la FROM reservation WHERE num_vol = '. $num_vol .' AND jour = '. $jour .' AND mois = '. $mois .' AND date_reserv > (SELECT date_reserv FROM reservation WHERE num_vol = '. $num_vol .' AND jour = '. $jour .' AND mois = '. $mois .' AND code_passager = \''. $code_passager .'\');';
+		$res_position_la = pg_query($_connection, $req_position_la);
 		$ret_position_la = pg_fetch_assoc($res_position_la);
 		if (!$ret_position_la) {
 			return FALSE;
@@ -79,7 +79,7 @@ function inversBool($booleen) {
 	return $booleen;
 }
 
-/* === Merci &agrave; dev@omikrosys.com (Page 'date' de la doc PHP) pour ces deux fonctions === */
+/* === Merci a dev@omikrosys.com (Page 'date' de la doc PHP) pour ces deux fonctions === */
 function leapYear($year) { 
  	if ($year % 400 == 0 || ($year % 4 == 0 && $year % 100 != 0)) {
  		return TRUE;
@@ -109,6 +109,20 @@ function daysInMonth($month = 0, $year = '') {
   			return 0;
   		}
  	} 
+}
+/* ====== */
+
+/* === Merci a thierryreeuwijk@hotmail.com (Page 'is_int' de la doc PHP) pour cette fonction === */
+function isInt($int) {
+    if (is_numeric($int) === TRUE) {
+        if ((int)$int == $int) {
+            return TRUE;
+        } else {
+            return FALSE;
+        }
+    } else {
+        return FALSE;
+    }
 }
 /* ====== */
 

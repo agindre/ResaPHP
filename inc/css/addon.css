@@ -64,3 +64,13 @@ tr.pair {
 .block {
 	display: block
 }
+div.credit {
+	border: 1px solid red;
+	padding: 10px;
+}
+div.credit ul {
+	margin-bottom: 0;
+}
+div#navigation, div#pied, div#entete {
+	font-weight: bold;
+}
