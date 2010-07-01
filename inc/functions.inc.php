@@ -112,6 +112,20 @@ function daysInMonth($month = 0, $year = '') {
 }
 /* ====== */
 
+/* === Merci a thierryreeuwijk@hotmail.com (Page 'is_int' de la doc PHP) pour cette fonction === */
+function isInt($int) {
+    if (is_numeric($int) === TRUE) {
+        if ((int)$int == $int) {
+            return TRUE;
+        } else {
+            return FALSE;
+        }
+    } else {
+        return FALSE;
+    }
+}
+/* ====== */
+
 function ddlDepart() {
 	$liste_departements = array(
 		'01' => '(01) Ain',

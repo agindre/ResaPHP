@@ -32,9 +32,9 @@ if (empty($_GET['num']) || empty($_GET['jour']) || empty($_GET['mois'])) {
 	// On recupere maintenant les informations du vol
 	if (!$flag_erreur_get) {
 		try {
-			$req_donnees_reserv = 'SELECT depart.num_vol, jour, mois, destination, vol_h_depart, frequence, statut
+			$req_donnees_reserv = 'SELECT destination, vol_h_depart, frequence, statut
 				FROM depart NATURAL JOIN vol NATURAL JOIN reservation
-				WHERE code_passager = \''. $code_passager .'\' reservation.num_vol = '. $num_vol .' AND jour = '. $jour .' AND mois = '. $mois .';';
+				WHERE code_passager = \''. $code_passager .'\' AND reservation.num_vol = '. $num_vol .' AND jour = '. $jour .' AND mois = '. $mois .';';
 			$res_donnees_reserv = pg_query($req_donnees_reserv);
 			$ret_donnees_reserv = pg_fetch_assoc($res_donnees_reserv);
 		} catch (Exception $e) {
@@ -50,20 +50,23 @@ if (empty($_GET['num']) || empty($_GET['jour']) || empty($_GET['mois'])) {
 
 // S'il n'y a pas d'erreurs, on initialise les variables de session, afin de les envoyer à la page de validation
 if (!$flag_erreur_get) {
-	$_SESSION['num_vol'] = $ret_donnees_reserv['num_vol'];
-	$_SESSION['jour'] = $ret_donnees_reserv['jour'];
-	$_SESSION['mois'] = $ret_donnees_reserv['mois'];
+	$_SESSION['num_vol'] = $num_vol;
+	$_SESSION['jour'] = $jour;
+	$_SESSION['mois'] = $mois;
 } else {
 	header('Location: home.php');
 	exit();
 }
+
+$position_la = get_position_la($num_vol, $jour, $mois, $code_passager, $_connection);
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
 <html>
 	<head>
 		<title>Page suppr_reserv.php du projet IBD</title>
 		<link rel="stylesheet" type="text/css" href="inc/css/base.css" media="all" />
-		<link rel="stylesheet" type="text/css" href="sinc/css/modele03.css" media="screen" />
+		<link rel="stylesheet" type="text/css" href="inc/css/modele03.css" media="screen" />
+		<link rel="stylesheet" type="text/css" href="inc/css/addon.css" media="screen" />
 
 	</head>
 	<body>
@@ -72,11 +75,11 @@ if (!$flag_erreur_get) {
 			<p>
 				Voulez-vous vraiment annuler votre r&eacute;servation sur le vol <?php echo($num_vol); ?> du <?php echo(str_pad($jour, 2, '0', STR_PAD_LEFT) .'/'. str_pad($mois, 2, '0', STR_PAD_LEFT)); ?> ?<br />
 				<?php
-				if ($res_donnees_reserv['statut'] == 'OK') {
+				if ($ret_donnees_reserv['statut'] == 'OK') {
 				?>
 				Vous &ecirc;tes pour l'instant list&eacute; parmi les passagers, en liste principale
 				<?php } else { ?>
-				Vous &ecirc;tes pour l'instant <?php echo(); ?> sur la liste d'attente
+				Vous &ecirc;tes pour l'instant <?php echo($position_la); ?> sur la liste d'attente
 				<?php } ?>
 			</p>
 			<a href="suppr_reserv_process.php" class="gauche" title="Cliquer ici pour annuler votre commande">Annuler ma commande</a>

@@ -22,7 +22,7 @@ if (!isset($_SESSION['num_vol'], $_SESSION['jour'], $_SESSION['mois'])) {
 	exit();
 }
 
-$id_passager = pg_escape_string($_SESSION['id']);
+$code_passager = pg_escape_string($_SESSION['id']);
 $mail = pg_escape_string($_SESSION['mail']);
 $num_vol = pg_escape_string($_SESSION['num_vol']);
 $jour = pg_escape_string($_SESSION['jour']);
@@ -31,18 +31,17 @@ $mois = pg_escape_string($_SESSION['mois']);
 $flag_err = FALSE;
 if (!filter_var($mail, FILTER_VALIDATE_EMAIL)) {
 	$flag_err = TRUE;
-} elseif (!is_numeric($num_vol) || $num_vol > 9000000000) {
+} elseif (!isInt($num_vol) || $num_vol > 9000000000) {
 	// On evite de rentrer une valeur non entière, ou un numéro de vol qui ne peut pas exister, sauf si un nouveau continent apparaît...
 	$flag_err = TRUE;
-} elseif (!is_numeric($jour) || $jour < 1 || $jour > daysInMonth($mois)) {
-	// Si le numero du jour est soit négatif ou nul, soit supérieur au nombre de jour dans le mois
+} elseif (!isInt($jour) || $jour < 1 || $jour > daysInMonth($mois)) {
+	// Si le numero du jour est soit négatif ou nul, soit supérieur au nombre de jour dans le mois, soit pas un entier du tout
 	$flag_err = TRUE;
-} elseif (!is_numeric($mois) || $mois < 1 || $mois > 12) {
+} elseif (!isInt($mois) || $mois < 1 || $mois > 12) {
 	$flag_err = TRUE;
 }
 
 if ($flag_err) {
-	$_SESSION['flag_err'] = $flag_err;
 	header('Location: liste_depart.php');
 	exit();
 }
@@ -50,7 +49,7 @@ if ($flag_err) {
 // Les vérifications d'usages sont faites, on peut commencer le traitement
 try {
 	pg_begin();
-	$req_reserv = 'INSERT INTO reservation(code_passager, num_vol, jour, mois, date_reserv, date_limite_reserv, statut) VALUES (\''. $id_passager .'\', '. $num_vol .', '. $jour .', '. $mois .', \''. date('Y-m-d G:i:sP', time()) .'\', \''. date('Y-m-d G:i:sP', (time() + (14 * 24 * 60 * 60))) .'\', \'OK\');';
+	$req_reserv = 'INSERT INTO reservation(code_passager, num_vol, jour, mois, date_reserv, date_limite_reserv, statut) VALUES (\''. $code_passager .'\', '. $num_vol .', '. $jour .', '. $mois .', \''. date('Y-m-d G:i:sP', time()) .'\', \''. date('Y-m-d G:i:sP', (time() + (14 * 24 * 60 * 60))) .'\', \'OK\');';
 	// On ajoute 14 jours en secondes à la date de réservation pour obtenir la date limite de réservation
 	$res_reserv = pg_query($req_reserv);
 	pg_commit();
@@ -62,7 +61,8 @@ try {
 
 // Ici, on trouve la partie responsable de l'envoi des mails, avec vérification de la réception des mails, et système de suppression de la réservation en cas de non-réception du mail. Il faut cependant un serveur smtp intégré pour que cette partie soit fonctionnelle
 
-/* $subject = 'Votre réservation a bien été reçue';
+/*
+$subject = 'Votre réservation a bien été reçue';
 $message = 'Votre réservation pour le vol '. $num_vol .' du '. str_pad($jour, 2, '0', STR_PAD_LEFT) .'/'. str_pad($mois, 2, '0', STR_PAD_LEFT) .' a bien été prise en compte. Merci d\'être passé par notre site. Bon voyage !';
 
 $flag_mail = FALSE;
@@ -78,7 +78,7 @@ do {
 if (!$flag_mail) {
 	try {
 		pg_begin();
-		$req_suppr_reserv = 'DELETE FROM reservation WHERE code_passager = \''. $id_passager .'\' AND num_vol = '. $num_vol .' AND jour = '. $jour .' AND mois = '. $mois .';';
+		$req_suppr_reserv = 'DELETE FROM reservation WHERE code_passager = \''. $code_passager .'\' AND num_vol = '. $num_vol .' AND jour = '. $jour .' AND mois = '. $mois .';';
 		$res_suppr_reserv = pg_query($req_suppr_reserv);
 		pg_commit();
 	} catch(Exception $e) {
@@ -88,7 +88,8 @@ if (!$flag_mail) {
 	}
 	header('Location: error.php');
 	exit();
-} */
+}
+*/
 
 header('Location: confirm_reserv.php');
 exit();

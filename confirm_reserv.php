@@ -46,6 +46,7 @@ $position_la = get_position_la($num_vol, $jour, $mois, $code_passager, $_connect
 			</p>
 			<a href="home.php" class="gauche" title="Cliquer ici pour revenir &agrave; la page d'accueil">Revenir &agrave; la page d'accueil</a>
 			<a href="liste_depart.php" class="droite" title="Cliquer ici pour revenir &agrave; la liste des prochains d&eacute;parts">Revenir &agrave; la liste des prochains d&eacute;parts</a>
+			<br style="clear:both;" />
 		</div>
 		<?php require_once('inc/footer.inc.php'); ?>
 	</body>
