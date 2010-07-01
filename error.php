@@ -4,9 +4,7 @@ require_once('inc/functions.inc.php');
 
 // Avant toute autre chose, on ouvre la session, pour pouvoir accéder aux variables de session
 session_start();
-myPrint_r($_SESSION);
 unset($_SESSION);
-myPrint_r($_SESSION);
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
 <html>

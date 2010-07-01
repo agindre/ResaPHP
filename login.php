@@ -23,6 +23,10 @@ if (isset($_SESSION['id'], $_SESSION['nom'], $_SESSION['prenom'], $_SESSION['mai
 		<link rel="stylesheet" type="text/css" href="inc/css/base.css" media="all" />
 		<link rel="stylesheet" type="text/css" href="inc/css/modele03.css" media="screen" />
 		<link rel="stylesheet" type="text/css" href="inc/css/addon.css" media="screen" />
+                <script type="text/javascript" src="inc/js/jquery-1.4.2.js" />
+                <script type="text/javascript">
+                   
+                </script>
 	</head>
 	<body>
 		<?php require_once('inc/header_nreg.inc.php'); ?>
@@ -43,7 +47,7 @@ if (isset($_SESSION['id'], $_SESSION['nom'], $_SESSION['prenom'], $_SESSION['mai
 			<form method="post" action="login_process.php">
 				<label for="prenom">Votre pr&eacute;nom : <strong>*</strong></label><input type="text" id="prenom" name="prenom" /><br />
 				<label for="nom">Votre nom : <strong>*</strong></label><input type="text" id="nom" name="nom" /><br />
-				<label for="adresse">Votre adresse : <strong>*</strong></label><textarea cols="50" rows="3" id="adresse" name="adresse">Tapez votre adresse ici...</textarea><br />
+                                <label for="adresse">Votre adresse : <strong>*</strong></label><textarea cols="50" rows="3" id="adresse" name="adresse" onfocus="if (this.value == 'Tapez votre adresse ici...') { this.value = '';};">Tapez votre adresse ici...</textarea><br />
 				<label for="departmt">Votre d&eacute;partement : <strong>*</strong></label>
 				<?php ddlDepart(); ?>
 				<label for="tel">Votre num&eacute;ro de t&eacute;l&eacute;phone :</label><input type="text" id="tel" name="tel" maxlength="14" /><br />
