@@ -13,7 +13,7 @@ require_once('inc/functions.inc.php');
 session_start();
 
 if (!isset($_SESSION['id'], $_SESSION['nom'], $_SESSION['prenom'], $_SESSION['mail'])) {
-	$_SESSION['liste_err'] = array('Vous devez être connecté avant de réserver une place sur un vol');
+	$_SESSION['liste_err'] = array('Vous devez &ecirc;tre connect&eacute; avant de r&eacute;server une place sur un vol');
 	header('Location: register.php');
 	exit();
 }

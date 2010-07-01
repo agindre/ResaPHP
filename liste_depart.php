@@ -1,11 +1,10 @@
 <?php
 require_once('inc/config.inc.php');
-require_once('inc/functions.inc.php');
 require_once('inc/connec_bdd.inc.php');
+require_once('inc/functions.inc.php');
 
 // Avant toute autre chose, on ouvre la session, pour pouvoir accéder aux variables de session
 session_start();
-myPrint_r($_SESSION);
 unset($_SESSION['num_vol'], $_SESSION['jour'], $_SESSION['mois']);
 
 $flag_reg = FALSE;
@@ -30,7 +29,7 @@ if (isset($_SESSION['id'], $_SESSION['nom'], $_SESSION['prenom'], $_SESSION['mai
 		}	
 	?>
 		<div id="contenu">
-			<table summary="Voici la liste des prochains departs">
+			<table summary="Voici la liste des prochains d&eacute;parts">
 				<caption>Voici la liste des prochains d&eacute;parts : </caption>
 				<thead>
 					<tr>
@@ -53,7 +52,6 @@ if (isset($_SESSION['id'], $_SESSION['nom'], $_SESSION['prenom'], $_SESSION['mai
 					// On créé une variable booleenne pour changer le style en fonction des lignes
 					$flag_pair = TRUE;
 					while ($ret_departs = pg_fetch_assoc($res_departs)) {
-						//myPrint_r($ret_departs, 'Vol numero '. $ret_departs['num_vol'] .' : ');
 						if ($flag_pair) {
 							echo("\t\t\t\t\t".'<tr class="pair">'."\n");
 						} else {
@@ -67,7 +65,7 @@ if (isset($_SESSION['id'], $_SESSION['nom'], $_SESSION['prenom'], $_SESSION['mai
 						echo("\t\t\t\t\t\t".'<td>Depart : '. str_pad($details_depart['hour'], 2, '0', STR_PAD_LEFT) .':'. str_pad($details_depart['minute'], 2, '0', STR_PAD_LEFT) .'<br />Arriv&eacute;e : '. str_pad($details_arrivee['hour'], 2, '0', STR_PAD_LEFT) .':'. str_pad($details_arrivee['minute'], 2, '0', STR_PAD_LEFT) .'</td>'."\n");
 						echo("\t\t\t\t\t\t".'<td>'. $ret_departs['destination'] .'</td>'."\n");
 						echo("\t\t\t\t\t\t".'<td>'. $ret_departs['nb_places_disp'] .'</td>'."\n");
-						echo("\t\t\t\t\t\t".'<td><a href="fiche_depart.php?num='. $ret_departs['num_vol'] .'&jour='. $ret_departs['jour'] .'&mois='. $ret_departs['mois'] .'" title="Cliquez ici pour reserver sur ce depart">R&eacute;server</a></td>'."\n");
+						echo("\t\t\t\t\t\t".'<td><a href="fiche_depart.php?num='. $ret_departs['num_vol'] .'&jour='. $ret_departs['jour'] .'&mois='. $ret_departs['mois'] .'" title="Cliquez ici pour r&eacute;server sur ce d&eacute;part">R&eacute;server</a></td>'."\n");
 						echo("\t\t\t\t\t".'</tr>'."\n");
 					}
 				?>

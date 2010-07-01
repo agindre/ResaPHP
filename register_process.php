@@ -1,7 +1,7 @@
 <?php
 require_once('inc/config.inc.php');
-require_once('inc/functions.inc.php');
 require_once('inc/connec_bdd.inc.php');
+require_once('inc/functions.inc.php');
 
 // Dans cette page, on va permettre à l'utilisateur de se connecter, afin de réserver son billet
 // Pour cela, on vérifie tout d'abord que les deux champs nécessaires sont bien remplis, et que les valeurs sont valides
@@ -37,7 +37,7 @@ if (empty($_POST['mail'])) {
 	}
 	
 	if (empty($passwd_bdd)) {
- 		$_liste_err[] = 'L\'adresse mail n\'existe pas dans notre base de données';
+ 		$_liste_err[] = 'L\'adresse mail n\'existe pas dans notre base de donn&eacute;es';
 	} elseif ($passwd_bdd != $passwd) {
 		$_liste_err[] = 'Mot de passe incorrect';
 	}

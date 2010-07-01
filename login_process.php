@@ -12,7 +12,7 @@ $_liste_err = array();
 
 // On teste si TOUTES les variables dont nous avons besoin sont bien passé en paramètres POST
 if (empty($_POST['prenom']) || empty($_POST['nom']) || empty($_POST['adresse']) || empty($_POST['mail']) || empty($_POST['passwd'])) {
-	$_liste_err[] = 'Trop peu de paramètres reçus';
+	$_liste_err[] = 'Trop peu de param&egrave;tres reçus';
 } else {
 	$prenom = pg_escape_string($_POST['prenom']);
 	$nom = pg_escape_string($_POST['nom']);
@@ -33,7 +33,7 @@ if (empty($_POST['prenom']) || empty($_POST['nom']) || empty($_POST['adresse']) 
 		$_liste_err[] = 'Adresse non valide';
 	}
 	if (!isset($liste_departements[$departmt])) {
-		$_liste_err[] = 'Problème lors de la réception du département';
+		$_liste_err[] = 'Probl&egrave;me lors de la réception du département';
 	}
 	if (!filter_var($mail, FILTER_VALIDATE_EMAIL)) {
 		$_liste_err[] = 'Adresse mail non valide';

@@ -7,7 +7,7 @@ require_once('inc/functions.inc.php');
 session_start();
 
 if (!isset($_SESSION['id'], $_SESSION['nom'], $_SESSION['prenom'], $_SESSION['mail'])) {
-	$_SESSION['liste_err'] = array('Vous devez être connecté avant de réserver une place sur un vol');
+	$_SESSION['liste_err'] = array('Vous devez &ecirc;tre connect&eacute; avant de r&eacute;server une place sur un vol');
 	header('Location: register.php');
 	exit();
 }
@@ -74,13 +74,13 @@ if (!$flag_erreur_get) {
 				<?php
 				if ($res_donnees_reserv['statut'] == 'OK') {
 				?>
-				Vous êtes pour l'instant listé parmi les passagers, en liste principale
+				Vous &ecirc;tes pour l'instant list&eacute; parmi les passagers, en liste principale
 				<?php } else { ?>
-				Vous êtes pour l'instant <?php echo(); ?> sur la liste d'attente
+				Vous &ecirc;tes pour l'instant <?php echo(); ?> sur la liste d'attente
 				<?php } ?>
 			</p>
 			<a href="suppr_reserv_process.php" class="gauche" title="Cliquer ici pour annuler votre commande">Annuler ma commande</a>
-			<a href="home.php" class="droite" title="Cliquer ici pour revenir à la page d'accueil">Revenir &agrave; la page d'accueil</a>
+			<a href="home.php" class="droite" title="Cliquer ici pour revenir &agrave; la page d'accueil">Revenir &agrave; la page d'accueil</a>
 			<br style="clear:both" />
 		</div>
 		<?php require_once('inc/footer.inc.php'); ?>

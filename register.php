@@ -1,5 +1,6 @@
 <?php
 require_once('inc/config.inc.php');
+require_once('inc/connec_bdd.inc.php');
 require_once('inc/functions.inc.php');
 
 // Avant toute autre chose, on ouvre la session, pour pouvoir accéder aux variables de session
@@ -25,11 +26,9 @@ if (isset($_SESSION['id'], $_SESSION['nom'], $_SESSION['prenom'], $_SESSION['mai
 		<link rel="stylesheet" type="text/css" href="inc/css/addon.css" media="screen" />
 	</head>
 	<body>
-<?php include('inc/header_nreg.inc.php'); ?>
+		<?php require_once('inc/header_nreg.inc.php'); ?>
 		<div id="contenu">
-			<p>
-				Vous avez un compte sur le site ? Ou alors vous &ecirc;tes un nouveau client ? Enregistrez-vous sur cette page.
-			</p>
+			<p>Vous avez un compte sur le site ? Ou alors vous &ecirc;tes un nouveau client ? Enregistrez-vous sur cette page.</p>
 			<?php if (isset($_liste_err)) { ?>
 			<div class="error">
 				<h6>Nous avons rencontr&eacute; des erreurs lors de la pr&eacute;c&eacute;dente tentative de connexion :</h6> 
@@ -50,10 +49,10 @@ if (isset($_SESSION['id'], $_SESSION['nom'], $_SESSION['prenom'], $_SESSION['mai
 			</form>
 			<div class="droite">
 				<h3>Pour vous inscrire</h3>
-				<a href="login.php">Cliquer ici</a>
+				<a href="login.php" title="Cliquer ici pour acc&eacute;der directement au formulaire d'inscription">Cliquer ici</a>
 			</div>
 			<br style="clear:both" />
 		</div>
-<?php include('inc/footer.inc.php'); ?>
+		<?php require_once('inc/footer.inc.php'); ?>
 	</body>
 </html>

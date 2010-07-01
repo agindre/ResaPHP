@@ -7,7 +7,7 @@ require_once('inc/functions.inc.php');
 session_start();
 
 if (!isset($_SESSION['id'], $_SESSION['nom'], $_SESSION['prenom'], $_SESSION['mail'])) {
-	$_SESSION['liste_err'] = array('Vous devez être connecté avant de réserver une place sur un vol');
+	$_SESSION['liste_err'] = array('Vous devez &ecirc;tre connect&eacute; avant de r&eacute;server une place sur un vol');
 	header('Location: register.php');
 	exit();
 }
@@ -17,7 +17,7 @@ $num_vol = pg_escape_string($_SESSION['num_vol']);
 $jour = pg_escape_string($_SESSION['jour']);
 $mois = pg_escape_string($_SESSION['mois']);
 unset($_SESSION['num_vol'], $_SESSION['jour'], $_SESSION['mois']);
-var_dump($_connection);
+
 $position_la = get_position_la($num_vol, $jour, $mois, $code_passager, $_connection);
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
@@ -39,13 +39,13 @@ $position_la = get_position_la($num_vol, $jour, $mois, $code_passager, $_connect
 				<?php if ($position_la != TRUE) { 
 				// On est obligé de passer par ce test un peu spécial, car la fonction renvoit un booléen, seulement si il y a eu une erreur, et une chaîne de caractère dans le cas contraire
 				?>
-				Vous êtes <?php echo($position_la); ?> dans la liste d'attente.<br />
+				Vous &ecirc;tes <?php echo($position_la); ?> dans la liste d'attente.<br />
 				<?php } ?>
 				Vous allez recevoir d'ici peu un mail de r&eacute;capitulatif des donn&eacute;es du d&eacute;part.<br />
 				Nous vons remer&ccedil;ions pour votre confiance, et vous souhaitons un agr&eacute;able voyage avec notre compagnie.
 			</p>
-			<a href="home.php" class="gauche" title="Cliquer ici pour revenir à la page d'accueil">Revenir &agrave; la page d'accueil</a>
-			<a href="liste_depart.php" class="droite" title="Cliquer ici pour revenir à la liste des prochains départs">Revenir &agrave; la liste des prochains d&eacute;parts</a>
+			<a href="home.php" class="gauche" title="Cliquer ici pour revenir &agrave; la page d'accueil">Revenir &agrave; la page d'accueil</a>
+			<a href="liste_depart.php" class="droite" title="Cliquer ici pour revenir &agrave; la liste des prochains d&eacute;parts">Revenir &agrave; la liste des prochains d&eacute;parts</a>
 		</div>
 		<?php require_once('inc/footer.inc.php'); ?>
 	</body>
